@@ -35,13 +35,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json(['status' => true, 'message' => 'Category Created']);
-        //$category = Category::create($request->only('name'));
+        //return response()->json(['status' => true, 'message' => 'Category Created']);
+        $category = Category::create($request->only('name'));
 
-        //return response()->json([
-        //    'status' => (bool)$category,
-        //    'message' => $category ? 'Category Created' : 'Error Creating Category'
-        //]);
+        return response()->json([
+            'status' => (bool)$category,
+            'message' => $category ? 'Category Created' : 'Error Creating Category'
+        ]);
     }
 
     /**
@@ -96,12 +96,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        return response()->json(['status' => true, 'message' => 'Category Deleted']);
-       // $status = $category->delete();
+        //return response()->json(['status' => true, 'message' => 'Category Deleted']);
+        $status = $category->delete();
 
-        //return response()->json([
-        //    'status' => $status,
-        //    'message' => $status ? 'Category Deleted' : 'Error Deleting Category'
-        //]);
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Category Deleted' : 'Error Deleting Category'
+        ]);
     }
 }

@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-//Route::get('/{any}', 'SinglePageController@index')->where('any', '.*')->name('landing');
+Route::get('/{any}', 'SinglePageController@index')->where('any', '.*')->name('landing');
