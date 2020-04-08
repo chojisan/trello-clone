@@ -104,7 +104,13 @@ export default {
           this.categories[id].tasks.push(response.data.data);
         });
     },
-    loadTasks() {},
+    loadTasks() {
+      this.categories.map(category => {
+        axios.get(`api/category/${category.id}/tasks`).then(response => {
+          category.tasks = response.data;
+        });
+      });
+    },
     changeOrder(data) {
       let toTask = data.to;
       let fromTask = data.from;
